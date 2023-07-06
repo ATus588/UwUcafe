@@ -34,7 +34,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='' element={<AuthGuard />}>
             <Route path='owner/restaurant/:restaurantId' element={<CreateStore />}></Route>
-            <Route path='owner/restaurant' element={<ListStore />}></Route>
+            <Route path='owner' element={<ListStore />}></Route>
             <Route path='owner/restaurant_new' element={<NewStore />}></Route>
           </Route>
           <Route path='profile' element={<Profile />} />
