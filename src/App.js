@@ -13,6 +13,9 @@ import ProfileRegister from './pages/RegisterProfile'
 import Restaurant from './pages/Restaurant';
 import Profile from './pages/Profile';
 import Reviews from './pages/Reviews';
+import CreateStore from './pages/CreateStore';
+import ListStore from './pages/ListStore';
+import NewStore from './pages/NewStore';
 
 // Middleware
 import AuthGuard from './pages/AuthGuard'
@@ -30,9 +33,12 @@ function App() {
         <Route path='/' element={<SharedLayout />} >
           <Route index element={<Home />} />
           <Route path='' element={<AuthGuard />}>
-            <Route path='profile' element={<Profile />} />
+            <Route path='owner/restaurant/:restaurantId' element={<CreateStore />}></Route>
+            <Route path='owner/restaurant' element={<ListStore />}></Route>
+            <Route path='owner/restaurant/new' element={<NewStore />}></Route>
           </Route>
-          <Route path='/profile-register' element={<ProfileRegister />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='profile-register' element={<ProfileRegister />} />
           <Route path='restaurant/:restaurantId' element={<Restaurant />} />
           <Route path='restaurant/:restaurantId/reviews' element={<Reviews />} />
         </Route>

@@ -79,7 +79,7 @@
     margin-right: 60px;
 }
 
-input[type=text], input[type=email], input[type=tel] {
+#input-profile {
     width: 400px;
     background-color: transparent;
     border: none;

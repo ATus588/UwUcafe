@@ -50,28 +50,28 @@ const ProfilePage = () => {
             <div className="input-field">
               <label>
                 <span>Full Name:</span>
-                <input type="text" value={user?.name} onChange={e => setUser({ ...user, name: e.target.value })} placeholder='Full name' />
+                <input id='input-profile' type="text" value={user?.name} onChange={e => setUser({ ...user, name: e.target.value })} placeholder='Full name' />
               </label>
             </div>
 
             <div className="input-field">
               <label>
                 <span>Email:</span>
-                <input type="email" value={user?.email} onChange={e => setUser({ ...user, email: e.target.value })} placeholder='Email' />
+                <input id='input-profile' type="email" value={user?.email} onChange={e => setUser({ ...user, email: e.target.value })} placeholder='Email' />
               </label>
             </div>
 
             <div className="input-field">
               <label>
                 <span>Phone Number:</span>
-                <input type="tel" value={user?.phone_number} onChange={e => setUser({ ...user, phone_number: e.target.value })} placeholder='Phone number' />
+                <input id='input-profile' type="tel" value={user?.phone_number} onChange={e => setUser({ ...user, phone_number: e.target.value })} placeholder='Phone number' />
               </label>
             </div>
 
             <div className="input-field">
               <label>
                 <span>Address:</span>
-                <input type="text" value={user?.address} onChange={e => setUser({ ...user, address: e.target.value })} placeholder='Address' />
+                <input id='input-profile' type="text" value={user?.address} onChange={e => setUser({ ...user, address: e.target.value })} placeholder='Address' />
                 <MapPopup onMapClick={handleMapClick} mapLocation={{ latitude: user.latitude || defaultLat, longitude: user.longitude || defaultLng }} />
               </label>
             </div>
