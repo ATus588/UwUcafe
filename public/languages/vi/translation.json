@@ -48,7 +48,11 @@
         "write_review":"Viết đánh giá",
         "menu": "Menu",
         "rating":"Đánh giá",
-        "see_review": "Xem đánh giá từ những người dùng khác"
+        "see_review": "Xem đánh giá từ những người dùng khác",
+        "service1": "Wifi",
+        "service2": "Toilet",
+        "service3":"Bãi đỗ xe",
+        "service4": "Phòng hút thuốc"
     },
     "setup" : {
         "header_text": "Nhập thông tin",
