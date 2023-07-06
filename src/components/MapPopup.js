@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Map from './Map';
 import { Button, Modal } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next'
 
 const MapPopup = ({ onMapClick, mapLocation }) => {
     const [show, setShow] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState({});
+    const { t } = useTranslation();
   
     const handleShow = () => {
       setShow(true);
@@ -27,8 +29,8 @@ const MapPopup = ({ onMapClick, mapLocation }) => {
   
     return (
       <div>
-        <Button variant="primary" onClick={handleShow}>
-          Open Map Popup
+        <Button style={{color: 'black'}} variant="primary" onClick={handleShow}>
+          {t('select_from_map')}
         </Button>
   
         <Modal show={show} onHide={handleClose}>

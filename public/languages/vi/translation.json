@@ -13,9 +13,9 @@
     "service": "Dịch vụ",
     "is_crowded": "Lưu lượng khách",
     "HBT_dis": "Q. Hai Bà Trưng",
-    "aircon": "Điều hòa",
-    "smoking_room": "Phòng hút thuốc",
-    "parking_lot": "Bãi đỗ xe",
+    "air_condition": "Điều hòa",
+    "wifi": "Wifi",
+    "parking_slot": "Bãi đỗ xe",
     "toilet": "Toilet",
     "cancel": "Hủy",
     "confirm_filter": "Xác nhận",
@@ -58,5 +58,23 @@
         "gender": "Giới tính",
         "phone_number": "Số điện thoại",
         "birthday": "Ngày sinh"
-    }
+    },
+    "profile": {
+        "title": "Thông tin người dùng",
+        "avatar_change": "Thay đổi hình ảnh",
+        "save_button": "Lưu",
+        "username": "Tên đăng nhập",
+        "name": "Tên người dùng",
+        "email": "Email",
+        "phone_number": "Số điện thoại",
+        "address": "Địa chỉ",
+        "gender": "Giới tính",
+        "birthday": "Ngày sinh",
+        "male": "Nam",
+        "female": "Nữ",
+        "day": "Ngày",
+        "month": "Tháng",
+        "year": "Năm"
+    },
+    "select_from_map": "Chọn từ map"
 }

@@ -338,7 +338,6 @@ transform: rotate(45deg);
 }
 .res-detail-container {
     background-image: linear-gradient(90deg,var(--green_blue), var(--light_blue));
-    height: 100%;
     border-radius: 30px;
     padding: 30px;
     display: grid;
@@ -353,7 +352,7 @@ transform: rotate(45deg);
     border-left: solid 1px black;
     padding-left: 20px;
     display: grid;
-    grid-template-rows: 30% 40% 30%;
+    grid-template-rows: 30% 70%;
 }
 .res-detail-img {
     border-radius: 20px;
@@ -369,7 +368,8 @@ transform: rotate(45deg);
 }
 .res-detail-service {
     display: flex;
-    margin: 10px;
+    margin: 5px;
+    font-size: 28px;
 }
 .res-detail-service div {
     margin-left: 10px;
@@ -377,9 +377,6 @@ transform: rotate(45deg);
 .res-detail-crowdedtime {
     margin-top: 10px;
     border-top: solid 1px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     font-size: 25px;
 }
 .res-detail-info {
@@ -392,13 +389,13 @@ transform: rotate(45deg);
     height: 100px;
     overflow-y: scroll;
     margin: 10px;
+    font-size: 24px;
+    margin-left: 40px;
 }
 .res-detail-menu-item {
     display: flex;
     width: 70%;
     justify-content: space-between;
-    padding: 10px;
-    height: 30px;
 }
 .res-detail-title {
     font-weight: bold;
@@ -429,10 +426,10 @@ transform: rotate(45deg);
     height: 20px;
     border-radius: 50%;
     background-color: rgb(129, 255, 129);
+    margin-bottom: 5px;
 }
 .setup-container {
     background-image: linear-gradient(90deg,var(--green_blue), var(--light_blue));
-    height: 100%;
     border-radius: 30px;
     padding: 30px;
     display: flex;

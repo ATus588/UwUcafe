@@ -11,9 +11,9 @@
     "service": "サービス",
     "is_crowded": "客の流れ",
     "HBT_dis": "ハイバトゥン区",
-    "aircon": "エアコン",
-    "smoking_room": "喫煙ルーム",
-    "parking_lot": "駐車場",
+    "air_condition": "エアコン",
+    "wifi": "Wifi",
+    "parking_slot": "駐車場",
     "toilet": "トイレ",
     "cancel": "キャンセル",
     "confirm_filter": "確認",
@@ -47,5 +47,27 @@
         "menu": "メニュー",
         "rating":"評価",
         "see_review": "他のユーザーからのレビューを見る"
+    },
+    "profile": {
+        "title": "ユーザー情報",
+        "avatar_change": "写真を変更する",
+        "save_button": "保存",
+        "username": "ユーザー名",
+        "name": "名前",
+        "email": "メール",
+        "phone_number": "電話番号",
+        "address": "住所",
+        "gender": "性",
+        "birthday": "生年月日",
+        "male": "男",
+        "female": "女",
+        "day": "日",
+        "month": "月",
+        "year": "年"
+    },
+    "select_from_map": "地図上で選択する",
+    "review": {
+        "all_filter": "All",
+        "star": "つ星"
     }
 }
