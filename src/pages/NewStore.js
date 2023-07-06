@@ -5,12 +5,13 @@ import cameraImg from '../images/camera.png'
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import apiClient from '../APIclient'
-
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function NewStore() {
+    const navigate = useNavigate()
 
     const { t } = useTranslation()
-
 
     const [store, setStore] = useState({
         name: '',
@@ -19,9 +20,11 @@ function NewStore() {
         end_crowded_time: '4:00',
         latitute: 21.0045,
         longtitude: 105.0014,
-        menu: [],
+        items: [],
         services: []
     })
+
+
     const [newItem, setNewItem] = useState({ name: '', price: '', description: '' })
 
     const [user, setUser] = useState({})
@@ -38,7 +41,18 @@ function NewStore() {
         const { checked, value } = event.target
         let newServices = store.services
         if (checked) {
-            newServices.push(value)
+            if (value == '1') {
+                newServices.push(1)
+            }
+            if (value == '2') {
+                newServices.push(2)
+            }
+            if (value == '3') {
+                newServices.push(3)
+            }
+            if (value == '4') {
+                newServices.push(4)
+            }
             setStore({ ...store, services: newServices })
         } else {
             var index = newServices.indexOf(value);
@@ -48,24 +62,40 @@ function NewStore() {
             }
         }
     }
-    const handleAddItem = (event) => {
-        let newMenu = store.menu;
+    const handleAddItem = () => {
+        let newMenu = store.items;
+
         newMenu.push(newItem)
-        setStore({ ...store, menu: newMenu })
+
+        setStore({ ...store, items: newMenu })
         setNewItem({ name: '', price: '', description: '' })
     }
-    const removeItem = (item) => {
-        let newMenu = store.menu.filter(function (i) {
-            return i !== item
-        })
-        setStore({ ...store, menu: newMenu })
+    // const removeItem = (index) => {
+    //     let newMenu = store.items;
+    //     newMenu.splice(index, 1);
+    //     setStore({ ...store, items: newMenu })
+    // }
+
+    const onChangeCrTime = (event) => {
+        setStore({ ...store, crowded_time: event.target.value })
+    }
+    const onChangeCrTimeEnd = (event) => {
+        setStore({ ...store, end_crowded_time: event.target.value })
     }
 
-    function onSubmit(event) {
-        console.log(store);
 
-    }
+    const handleSave = async () => {
 
+        try {
+            const response = await apiClient.post(`/create_store`, { store })
+            if (response.status === 200) {
+                toast('Create success!')
+                navigate('/owner/restaurant')
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    };
     return (
         <>
             <div class="flex-container content_area">
@@ -77,7 +107,7 @@ function NewStore() {
                             Thay đổi hình ảnh
                         </div>
                     </label>
-                    <div className='save-btn' onClick={() => onSubmit()}>Save</div>
+                    <div className='save-btn' onClick={() => handleSave()}>Save</div>
                 </div>
 
                 <div class="divine-line">
@@ -108,7 +138,7 @@ function NewStore() {
                             <button className='' onClick={handleAddItem}>Add</button>
                         </div>
                         {
-                            store.menu && store.menu.map((item, index) => {
+                            store.items && store.items.map((item, index) => {
                                 return (
                                     <div class="flex-container space-between menu_item" key={index}>
                                         <div class="drink">
@@ -117,9 +147,9 @@ function NewStore() {
                                         <div class="price">
                                             {item.price}
                                         </div>
-                                        <div onClick={removeItem(item)}>
+                                        {/* <div onClick={removeItem(index)}>
                                             remove
-                                        </div>
+                                        </div> */}
                                     </div>
                                 )
                             })
@@ -141,28 +171,28 @@ function NewStore() {
                             <div class="option_text">
                                 {t('restaurant.service1')}
                             </div>
-                            <input type="checkbox" checked={store.services.includes(1)} value={1} onChange={onChangeCheckbox} />
+                            <input type="checkbox" value={1} onChange={onChangeCheckbox} />
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
                             <div class="option_text">
                                 {t('restaurant.service2')}
                             </div>
-                            <input type="checkbox" checked={store.services.includes(2)} value={2} onChange={onChangeCheckbox} />
+                            <input type="checkbox" value={2} onChange={onChangeCheckbox} />
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
                             <div class="option_text">
                                 {t('restaurant.service3')}
                             </div>
-                            <input type="checkbox" checked={store.services.includes(3)} value={3} onChange={onChangeCheckbox} />
+                            <input type="checkbox" value={3} onChange={onChangeCheckbox} />
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">
                             <div class="option_text">
                                 {t('restaurant.service4')}
                             </div>
-                            <input type="checkbox" checked={store.services.includes(4)} value={4} onChange={onChangeCheckbox} />
+                            <input type="checkbox" value={4} onChange={onChangeCheckbox} />
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -173,8 +203,8 @@ function NewStore() {
                         </div>
                         {
                             store.crowded_time && <>
-                                <input type="text" class="custom_input_store time_input" value={store.crowded_time} />
-                                <input type="text" class="custom_input_store time_input" value={store.crowded_time_end} />
+                                <input type="text" class="custom_input_store time_input" value={store.crowded_time} onChange={onChangeCrTime} />
+                                <input type="text" class="custom_input_store time_input" value={store.end_crowded_time} onChange={onChangeCrTimeEnd} />
                             </>
                         }
                     </div>
