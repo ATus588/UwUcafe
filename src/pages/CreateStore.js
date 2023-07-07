@@ -119,10 +119,10 @@ function CreateStore() {
     const handleSave = async () => {
         console.log(store)
         try {
-            const response = await apiClient.put(`/update_store`, { store })
+            const response = await apiClient.put(`/owned-restaurants/${restaurantId}`, { ...store })
             if (response.status === 200) {
                 toast('Update success!')
-                navigate(0)
+                // navigate(0)
             }
         } catch (e) {
             console.log(e)
@@ -138,10 +138,10 @@ function CreateStore() {
                     <label htmlFor="image_input" className="flex-container align-content-center camera_button">
                         <img className="camera_icon" src={cameraImg} alt="" />
                         <div className="camera_text">
-                            Thay đổi hình ảnh
+                            {t('profile.avatar_change')}
                         </div>
                     </label>
-                    <div className='save-btn' onClick={handleSave}>Save</div>
+                    <div className='save-btn' onClick={handleSave}>{t('profile.save_button')}</div>
                 </div>
 
                 <div className="divine-line">
@@ -159,7 +159,7 @@ function CreateStore() {
                     {store.total_star && <ShowStar star={store.total_star} total_review={store.view} />}
                     <div className="flex-container space-between">
                         <div className="title">
-                            Menu
+                            {t('restaurant.menu')}
                         </div>
                         <img src={penImg} style={{ height: '50px', alignSelf: "flex-end" }} alt="" />
                     </div>
@@ -170,8 +170,8 @@ function CreateStore() {
                     <div className="menu_container">
                         <div className="menu_input_item flex-container space-between">
                             <input id="drink_input" className="custom_input_store" type="text" onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} />
-                            <input id="price_input" className="custom_input_store price_input" type="number" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} />
-                            <button className='' onClick={handleAddItem}>Add</button>
+                            <input id="price_input" className="custom_input_store price_input" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} />
+                            <button className='save-btn' style={{width: '50px'}} onClick={handleAddItem}>{t('add_btn')}</button>
                         </div>
                         {
                             store.items && store.items.map((item, index) => {
@@ -191,7 +191,7 @@ function CreateStore() {
 
                     <div className="flex-container space-between">
                         <div className="title">
-                            Tuỳ chọn
+                            {t('services')}
                         </div>
                         <img src={penImg} style={{ height: '50px', alignSelf: "flex-end" }} alt="" />
                     </div>
@@ -204,40 +204,40 @@ function CreateStore() {
                             <div className="option_text">
                                 {t('restaurant.service1')}
                             </div>
-                            <input type="checkbox" value={1} onChange={onChangeCheckbox} />
+                            <input checked={store.services.some(item => item == 1)} type="checkbox" value={1} onChange={onChangeCheckbox} />
                             <span className="checkmark"></span>
                         </label>
                         <label className="container">
                             <div className="option_text">
                                 {t('restaurant.service2')}
                             </div>
-                            <input type="checkbox" value={2} onChange={onChangeCheckbox} />
+                            <input checked={store.services.some(item => item == 2)} type="checkbox" value={2} onChange={onChangeCheckbox} />
                             <span className="checkmark"></span>
                         </label>
                         <label className="container">
                             <div className="option_text">
                                 {t('restaurant.service3')}
                             </div>
-                            <input type="checkbox" value={3} onChange={onChangeCheckbox} />
+                            <input checked={store.services.some(item => item == 3)} type="checkbox" value={3} onChange={onChangeCheckbox} />
                             <span className="checkmark"></span>
                         </label>
                         <label className="container">
                             <div className="option_text">
                                 {t('restaurant.service4')}
                             </div>
-                            <input type="checkbox" value={4} onChange={onChangeCheckbox} />
+                            <input checked={store.services.some(item => item == 4)} type="checkbox" value={4} onChange={onChangeCheckbox} />
                             <span className="checkmark"></span>
                         </label>
                     </div>
 
                     <div className="flex-container align-content-center">
                         <div className="time">
-                            Khung giờ đông khách
+                            {t('restaurant.crowded_time')}
                         </div>
                         {
                             store.crowded_time && <>
                                 <input type="text" className="custom_input_store time_input" value={store.crowded_time} onChange={onChangeCrTime} />
-                                <input type="text" className="custom_input_store time_input" value={store.crowded_time_end} onChange={onChangeCrTimeEnd} />
+                                <input type="text" className="custom_input_store time_input" value={store.end_crowded_time} onChange={onChangeCrTimeEnd} />
                             </>
                         }
                     </div>

@@ -192,7 +192,7 @@ function Home() {
                 <div className="search-container">
                     <div className="search-left">
                         <div className="search-text">{t('search_text')}</div>
-                        <button className="option-btn" onClick={() => setOpen(!open)}>{t('option_btn')}</button>
+                        <button className="option-btn" onClick={() => setOpen(!open)}>{t('services')}</button>
                     </div>
                     <div className="search-right" ref={historyRef}>
                         <form onSubmit={onSubmit} autoComplete='off'>

@@ -4,7 +4,9 @@
     "login_btn": "ログイン",
     "total_text": "{{total}} 結果を表示",
     "address_text": "{{addr_num}} 番地 {{addr_street}}",
+    "review_count": "75評価上",
     "filter": "フィルター",
+    "services": "サービス",
     "delete":"削除",
     "location": "場所",
     "rating": "評価",
@@ -19,6 +21,7 @@
     "confirm_filter": "確認",
     "is_crowded_true": "混雑している",
     "is_crowded_false": "空いている",
+    "add_btn": "追加",
     "login": {
         "role": {
              "store": "店の主人としてログイン",
@@ -46,7 +49,12 @@
         "write_review":"レビューを書く",
         "menu": "メニュー",
         "rating":"評価",
-        "see_review": "他のユーザーからのレビューを見る"
+        "see_review": "他のユーザーからのレビューを見る",
+        "service1": "エアコン",
+        "service2": "トイレ",
+        "service3": "駐車場",
+        "service4": "Wifi",
+        "holder_name": "喫茶店名"
     },
     "profile": {
         "title": "ユーザー情報",

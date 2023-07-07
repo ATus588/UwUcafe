@@ -3,10 +3,11 @@
     "option_btn": "Tùy chọn",
     "login_btn": "Đăng nhập",
     "logout":"Đăng xuất",
-    "review_count": "Hơn {{total_review}} đánh giá",
+    "review_count": "Hơn 75 đánh giá",
     "total_text": "Hiển thị {{total}} kết quả",
     "address_text": "Số {{addr_num}} Đường {{addr_street}}",
     "filter": "Bộ lọc",
+    "services": "Dịch vụ",
     "delete":"Xóa",
     "location": "Địa điểm",
     "rating": "Đánh giá",
@@ -21,6 +22,7 @@
     "confirm_filter": "Xác nhận",
     "is_crowded_true": "Đông khách",
     "is_crowded_false": "Vắng khách",
+    "add_btn": "Thêm",
     "login": {
         "role": {
             "store": "Đăng nhập với vai trò chủ cửa hàng",

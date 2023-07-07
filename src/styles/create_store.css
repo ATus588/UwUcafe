@@ -131,7 +131,7 @@
 
 .menu_container {
     margin-top: 30px;
-    max-height: 600px;
+    max-height: 400px;
     overflow-y: scroll;
     padding-right: 5px;
 }
@@ -261,7 +261,7 @@
 }
 
 .time_input {
-    width: 120px;
+    width: 150px;
     margin: 5px;
 }
 .addr-num {
@@ -287,4 +287,14 @@
     padding: 5px;
     border-radius: 10px;
     background-color: var(--mild_yellow);
+}
+.save-btn {
+    background: #d0d183;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    border: 2px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    line-height: 40px;
 }

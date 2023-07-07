@@ -86,7 +86,7 @@ function Restaurant() {
             formData.append('image', selectedImage);
         }
         try {
-            const response = await axios.post(`http://18.179.201.202:8000/api/restaurant/${restaurantId}/review`, formData, {
+            const response = await axios.post(`http://43.207.160.102:8000/api/restaurant/${restaurantId}/review`, formData, {
                 headers: {
                     "Content-type": "multipart/form-data",
                     'Authorization': `Bearer ${localStorage.getItem('access_token')}`

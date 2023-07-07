@@ -16,6 +16,7 @@ function RestaurantCard({ restaurant }) {
     const addr_num = address.substring(0, address.indexOf(' '));
     const addr_street = address.substring(address.indexOf(' ') + 1);
 
+    const user = JSON.parse(localStorage.getItem('user'))
     return (
         <div className="restaurant-card">
             <img src={logo ? logo : defaulImage} alt={`beautiful ${name}`} className='res-img-home' />
@@ -24,7 +25,7 @@ function RestaurantCard({ restaurant }) {
                 <div>{t('address_text', { addr_num, addr_street })}</div>
                 <Star star={total_star} />
             </div>
-            <Link to={`/restaurant/${id}`} style={{ textAlign: 'end' }}>
+            <Link to={ (user && user.role == 1) ? `/owner/restaurant/${id}` : `/restaurant/${id}`} style={{ textAlign: 'end' }}>
                 <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
             </Link>
         </div>

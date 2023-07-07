@@ -12,7 +12,7 @@ function ListStore() {
 
     async function getRestaurants() {
         try {
-            const response = await apiClient.get('/owned_store');
+            const response = await apiClient.get('/owned-restaurants');
             setRestaurants(response.data);
         } catch (error) {
             console.error(error);
@@ -32,7 +32,7 @@ function ListStore() {
                 }
             </div>
 
-            <Link to='./restaurant_new' style={{ textDecoration: 'none', color: 'black' }}><div className='create-new-store-btn'>Thêm cửa hàng mới</div></Link>
+            <Link to='./new' style={{ textDecoration: 'none', color: 'black' }}><div className='create-new-store-btn'>Thêm cửa hàng mới</div></Link>
         </div>
     )
 }

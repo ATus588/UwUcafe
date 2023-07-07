@@ -87,7 +87,7 @@ function NewStore() {
     const handleSave = async () => {
 
         try {
-            const response = await apiClient.post(`/create_store`, { store })
+            const response = await apiClient.post(`/create-store`, { ...store })
             if (response.status === 200) {
                 toast('Create success!')
                 navigate('/owner/restaurant')
@@ -100,11 +100,12 @@ function NewStore() {
         <>
             <div class="flex-container content_area">
                 <div class="cafe_image_container">
+                    <img className="image_change" src='https://img.lovepik.com/free-png/20211109/lovepik-store-icon-png-image_400680314_wh1200.png' alt="" />
                     <input id="image_input" type="file" hidden />
                     <label for="image_input" class="flex-container align-content-center camera_button">
                         <img class="camera_icon" src={cameraImg} alt="" />
                         <div class="camera_text">
-                            Thay đổi hình ảnh
+                            {t('profile.avatar_change')}
                         </div>
                     </label>
                     <div className='save-btn' onClick={() => handleSave()}>Save</div>
@@ -123,7 +124,7 @@ function NewStore() {
                     </div>
                     <div class="flex-container space-between">
                         <div class="title">
-                            Menu
+                            {t('restaurant.menu')}
                         </div>
                         <img src={penImg} style={{ height: '50px', alignSelf: "flex-end" }} alt="" />
                     </div>
@@ -134,8 +135,8 @@ function NewStore() {
                     <div class="menu_container">
                         <div class="menu_input_item flex-container space-between">
                             <input id="drink_input" class="custom_input_store" type="text" onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} />
-                            <input id="price_input" class="custom_input_store price_input" type="number" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} />
-                            <button className='' onClick={handleAddItem}>Add</button>
+                            <input id="price_input" class="custom_input_store price_input" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} />
+                            <button className="save-btn" style={{width: '50px'}} onClick={handleAddItem}>{t('add_btn')}</button>
                         </div>
                         {
                             store.items && store.items.map((item, index) => {
@@ -158,7 +159,7 @@ function NewStore() {
 
                     <div class="flex-container space-between">
                         <div class="title">
-                            Tuỳ chọn
+                            {t('services')}
                         </div>
                         <img src={penImg} style={{ height: '50px', alignSelf: "flex-end" }} alt="" />
                     </div>
@@ -199,7 +200,7 @@ function NewStore() {
 
                     <div class="flex-container align-content-center">
                         <div class="time">
-                            Khung giờ đông khách
+                            {t('restaurant.crowded_time')}
                         </div>
                         {
                             store.crowded_time && <>

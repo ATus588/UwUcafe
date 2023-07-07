@@ -28,7 +28,7 @@ function UserInfo() {
                 <UserAvatar src={user?.avatar || defaultAvatar} alt="User Avatar" width="40px" height="40px" />
                 <span style={{ lineHeight: '40px', marginLeft: '10px', marginRight: '20px', fontSize: '20px' }}>{user?.name}</span>
             </Link>
-            <div onClick={() => handleLogout()} className='logout-btn'>{t('logout')}</div>
+            {/* <div onClick={() => handleLogout()} className='logout-btn'>{t('logout')}</div> */}
         </div>
     )
 }
