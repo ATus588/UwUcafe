@@ -22,6 +22,7 @@
     "is_crowded_true": "混雑している",
     "is_crowded_false": "空いている",
     "add_btn": "追加",
+    "remove_btn": "削除",
     "login": {
         "role": {
              "store": "店の主人としてログイン",

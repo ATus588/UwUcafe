@@ -28,7 +28,8 @@ function NewStore() {
     const [newItem, setNewItem] = useState({ name: '', price: '', description: '' })
 
     const [user, setUser] = useState({})
-
+    const [previewImage, setPreviewImage] = useState(null);
+    const [isLogoChange, setLogoChange] = useState(false);
 
     const onChangeName = (event) => {
         setStore({ ...store, name: event.target.value })
@@ -70,11 +71,11 @@ function NewStore() {
         setStore({ ...store, items: newMenu })
         setNewItem({ name: '', price: '', description: '' })
     }
-    // const removeItem = (index) => {
-    //     let newMenu = store.items;
-    //     newMenu.splice(index, 1);
-    //     setStore({ ...store, items: newMenu })
-    // }
+    const removeItem = (index) => {
+        let newMenu = store.items;
+        newMenu.splice(index, 1);
+        setStore({ ...store, items: [...newMenu] })
+    }
 
     const onChangeCrTime = (event) => {
         setStore({ ...store, crowded_time: event.target.value })
@@ -82,10 +83,33 @@ function NewStore() {
     const onChangeCrTimeEnd = (event) => {
         setStore({ ...store, end_crowded_time: event.target.value })
     }
+    const toBase64 = (file) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          console.log(reader.result)
+          setStore({ ...store, logo: reader.result })
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+      }
+
+    const handleLogoChange = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            toBase64(file)
+            setPreviewImage(URL.createObjectURL(file));
+            setLogoChange(true);
+        }
+    };
 
 
     const handleSave = async () => {
-
+        if (!isLogoChange) {
+            delete store.logo;
+        }
         try {
             const response = await apiClient.post(`/create-store`, { ...store })
             if (response.status === 200) {
@@ -101,7 +125,7 @@ function NewStore() {
             <div class="flex-container content_area">
                 <div class="cafe_image_container">
                     <img className="image_change" src='https://img.lovepik.com/free-png/20211109/lovepik-store-icon-png-image_400680314_wh1200.png' alt="" />
-                    <input id="image_input" type="file" hidden />
+                    <input id="image_input" type="file" hidden onChange={handleLogoChange}/>
                     <label for="image_input" class="flex-container align-content-center camera_button">
                         <img class="camera_icon" src={cameraImg} alt="" />
                         <div class="camera_text">
@@ -134,8 +158,8 @@ function NewStore() {
 
                     <div class="menu_container">
                         <div class="menu_input_item flex-container space-between">
-                            <input id="drink_input" class="custom_input_store" type="text" onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} />
-                            <input id="price_input" class="custom_input_store price_input" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} />
+                            <input id="drink_input" class="custom_input_store" type="text" onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} value={newItem.name} />
+                            <input id="price_input" class="custom_input_store price_input" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} value={newItem.price} />
                             <button className="save-btn" style={{width: '50px'}} onClick={handleAddItem}>{t('add_btn')}</button>
                         </div>
                         {
@@ -148,9 +172,9 @@ function NewStore() {
                                         <div class="price">
                                             {item.price}
                                         </div>
-                                        {/* <div onClick={removeItem(index)}>
-                                            remove
-                                        </div> */}
+                                        <button className="save-btn" style={{width: '50px', height: '43px'}} onClick={() => removeItem(index)}>
+                                            {t('remove_btn')}
+                                        </button>
                                     </div>
                                 )
                             })

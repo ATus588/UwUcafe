@@ -23,6 +23,7 @@
     "is_crowded_true": "Đông khách",
     "is_crowded_false": "Vắng khách",
     "add_btn": "Thêm",
+    "remove_btn": "Xóa",
     "login": {
         "role": {
             "store": "Đăng nhập với vai trò chủ cửa hàng",

@@ -25,6 +25,8 @@ function CreateStore() {
     const { restaurantId } = useParams()
 
     const [changeName, setChangeName] = useState(false)
+    const [previewImage, setPreviewImage] = useState(null);
+    const [isLogoChange, setLogoChange] = useState(false);
 
     const [store, setStore] = useState({
         name: '',
@@ -109,14 +111,37 @@ function CreateStore() {
     const onChangeCrTimeEnd = (event) => {
         setStore({ ...store, end_crowded_time: event.target.value })
     }
-    // const removeItem = (item) => {
-    //     let newMenu = store.items.filter(function (i) {
-    //         return i !== item
-    //     })
-    //     setStore({ ...store, items: newMenu })
-    // }
+    const removeItem = (index) => {
+        let newMenu = store.items;
+        newMenu.splice(index, 1);
+        setStore({ ...store, items: [...newMenu] })
+    }
+    const toBase64 = (file) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          console.log(reader.result)
+          setStore({ ...store, logo: reader.result })
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+      }
+
+    const handleLogoChange = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            toBase64(file)
+            setPreviewImage(URL.createObjectURL(file));
+            setLogoChange(true);
+        }
+    };
 
     const handleSave = async () => {
+        if (!isLogoChange) {
+            delete store.logo;
+        }
         console.log(store)
         try {
             const response = await apiClient.put(`/owned-restaurants/${restaurantId}`, { ...store })
@@ -134,7 +159,7 @@ function CreateStore() {
             <div className="flex-container content_area">
                 <div className="cafe_image_container">
                     {store.logo && <img className="image_change" src={store.logo} alt="" />}
-                    <input id="image_input" type="file" hidden />
+                    <input id="image_input" type="file" hidden onChange={handleLogoChange}/>
                     <label htmlFor="image_input" className="flex-container align-content-center camera_button">
                         <img className="camera_icon" src={cameraImg} alt="" />
                         <div className="camera_text">
@@ -169,20 +194,23 @@ function CreateStore() {
 
                     <div className="menu_container">
                         <div className="menu_input_item flex-container space-between">
-                            <input id="drink_input" className="custom_input_store" type="text" onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} />
-                            <input id="price_input" className="custom_input_store price_input" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} />
+                            <input id="drink_input" className="custom_input_store" type="text" onChange={(event) => setNewItem({ ...newItem, name: event.target.value })} value={newItem.name}/>
+                            <input id="price_input" className="custom_input_store price_input" onChange={(event) => setNewItem({ ...newItem, price: event.target.value })} value={newItem.price}/>
                             <button className='save-btn' style={{width: '50px'}} onClick={handleAddItem}>{t('add_btn')}</button>
                         </div>
                         {
                             store.items && store.items.map((item, index) => {
                                 return (
-                                    <div className="flex-container space-between menu_item" key={index}>
-                                        <div className="drink">
+                                    <div className="flex-container space-between menu_item align-items-center" style={{margin: '20px 0'}} key={index}>
+                                        <div className="drink" style={{width: '380px'}}>
                                             {item.name}
                                         </div>
                                         <div className="price">
                                             {item.price}
                                         </div>
+                                        <button className="save-btn" style={{width: '50px', height: '43px'}} onClick={() => removeItem(index)}>
+                                            {t('remove_btn')}
+                                        </button>
                                     </div>
                                 )
                             })
