@@ -8,6 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import apiClient from '../APIclient'
 import ShowStar from '../components/showStar'
+import MapPopup from '../components/MapPopup';
 
 const Address = ({ address }) => {
     const { t } = useTranslation()
@@ -27,6 +28,8 @@ function CreateStore() {
     const [changeName, setChangeName] = useState(false)
     const [previewImage, setPreviewImage] = useState(null);
     const [isLogoChange, setLogoChange] = useState(false);
+    const defaultLat = 21.004175;
+    const defaultLng = 105.843769;
 
     const [store, setStore] = useState({
         name: '',
@@ -138,6 +141,10 @@ function CreateStore() {
         }
     };
 
+    const handleMapClick = (location) => {
+        setStore({ ...store, ...location })
+    }
+
     const handleSave = async () => {
         if (!isLogoChange) {
             delete store.logo;
@@ -180,6 +187,7 @@ function CreateStore() {
                     </div>
                     <div className="flex-container space-between">
                         {changeName ? <input className='store-address-input' onChange={onChangeAddress} /> : <Address address={store.address} />}
+                        {changeName ? <MapPopup onMapClick={handleMapClick} mapLocation={{ latitude: store.latitude > 1 ? store.latitude : defaultLat, longitude: store.longitude > 1 ? store.longitude : defaultLng }} /> : <></>}
                     </div>
                     {store.total_star && <ShowStar star={store.total_star} total_review={store.view} />}
                     <div className="flex-container space-between">

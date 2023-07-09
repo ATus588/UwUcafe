@@ -258,7 +258,7 @@ function Reviews() {
                     </main>
                     <hr></hr>
                     <div>
-                        {currentUser ? <form className="create-review-container d-flex justify-content-center" onSubmit={handleSubmit}>
+                        {currentUser ? ( currentUser.role != 1 ? <form className="create-review-container d-flex justify-content-center" onSubmit={handleSubmit}>
                             <UserAvatar src={user?.avatar || defaultAvatar} alt="User Avatar" width="50px" height="50px" />
                             <div style={{marginLeft: '15px'}}>
                                 <div className='d-flex'>
@@ -289,7 +289,7 @@ function Reviews() {
                                 />
                             </div>
                             <div><button type="submit" style={{border: '2px solid black', borderRadius: '30px', background: '#cdced0', padding: '10px 20px', margin: '0 0 5px 15px'}}>投稿</button></div>
-                        </form> : <textarea
+                        </form> : <></>) : <textarea
                                     id="reviewContent"
                                     rows={1}
                                     disabled

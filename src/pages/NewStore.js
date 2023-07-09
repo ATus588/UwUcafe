@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import apiClient from '../APIclient'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import MapPopup from '../components/MapPopup';
 
 function NewStore() {
     const navigate = useNavigate()
@@ -30,6 +31,8 @@ function NewStore() {
     const [user, setUser] = useState({})
     const [previewImage, setPreviewImage] = useState(null);
     const [isLogoChange, setLogoChange] = useState(false);
+    const defaultLat = 21.004175;
+    const defaultLng = 105.843769;
 
     const onChangeName = (event) => {
         setStore({ ...store, name: event.target.value })
@@ -105,6 +108,9 @@ function NewStore() {
         }
     };
 
+    const handleMapClick = (location) => {
+        setStore({ ...store, ...location })
+    }
 
     const handleSave = async () => {
         if (!isLogoChange) {
@@ -145,6 +151,7 @@ function NewStore() {
                     </div>
                     <div class="flex-container space-between">
                         <input className='store-address-input' onChange={onChangeAddress} />
+                        <MapPopup onMapClick={handleMapClick} mapLocation={{ latitude: store.latitude > 1 ? store.latitude : defaultLat, longitude: store.longitude > 1 ? store.longitude : defaultLng }} />
                     </div>
                     <div class="flex-container space-between">
                         <div class="title">
