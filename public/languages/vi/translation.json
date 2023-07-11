@@ -83,5 +83,18 @@
         "month": "Tháng",
         "year": "Năm"
     },
-    "select_from_map": "Chọn từ map"
+    "select_from_map": "Chọn từ map",
+    "review": {
+        "all_filter": "All",
+        "star": "Sao"
+    },
+    "menu": {
+        "text": "Menu",
+        "store_list": "Danh sách cửa hàng",
+        "logout": "Đăng xuất"
+    },
+    "owner": {
+        "store_list": "Danh sách cửa hàng",
+        "add_btn": "Thêm cửa hàng mới"
+    }
 }

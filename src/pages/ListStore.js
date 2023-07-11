@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 function ListStore() {
 
     const [restaurants, setRestaurants] = useState([]);
+    const { t } = useTranslation()
 
     async function getRestaurants() {
         try {
@@ -23,7 +24,7 @@ function ListStore() {
     }, [])
     return (
         <div className='list-store-container'>
-            <h1 className='list-store-title'>Danh sách cửa hàng</h1>
+            <h1 className='list-store-title'>{t('owner.store_list')}</h1>
             <div className="list-store-result">
                 {
                     restaurants.map((restaurant) => {
@@ -32,7 +33,7 @@ function ListStore() {
                 }
             </div>
 
-            <Link to='./new' style={{ textDecoration: 'none', color: 'black' }}><div className='create-new-store-btn'>Thêm cửa hàng mới</div></Link>
+            <Link to='./new' style={{ textDecoration: 'none', color: 'black' }}><div className='create-new-store-btn'>{t('owner.add_btn')}</div></Link>
         </div>
     )
 }

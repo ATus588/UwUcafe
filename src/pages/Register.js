@@ -68,6 +68,7 @@ const Register = () => {
             localStorage.setItem('user', JSON.stringify(response.user));
             localStorage.setItem('access_token', response.access_token);
             navigate('/profile-register');
+            window.location.reload()
         } catch (error) {
             // Handle login error
             console.error('Login errorasa:', error);

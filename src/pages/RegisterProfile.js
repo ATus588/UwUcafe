@@ -25,12 +25,14 @@ const ProfilePage = () => {
 
   const handleSave = async () => {
     try {
-      console.log(user);
-      const response = await apiClient.post(`/update-profile`, { ...user })
+      const birthday = `${user.year}-${user.month}-${user.day}`
+      const response = await apiClient.post(`/update-profile`, { ...user, birthday })
       console.log(response)
       if (response.status === 200) {
         toast('Update success!')
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         navigate('/')
+        window.location.reload()
       }
     } catch (e) {
       console.log(e)

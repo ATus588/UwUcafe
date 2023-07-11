@@ -120,6 +120,13 @@ function NewStore() {
             const response = await apiClient.post(`/create-store`, { ...store })
             if (response.status === 200) {
                 toast('Create success!')
+                let currentUser = JSON.parse(localStorage.getItem('user'));
+                const newStore = response.data.data;
+                let storeArr = currentUser.restaurants;
+                if (storeArr && storeArr.length) {
+                    storeArr.push(newStore);
+                    localStorage.setItem('user', JSON.stringify(currentUser));
+                }
                 navigate('/owner/restaurant')
             }
         } catch (e) {

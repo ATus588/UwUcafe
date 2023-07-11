@@ -25,7 +25,7 @@ function RestaurantCard({ restaurant }) {
                 <div>{t('address_text', { addr_num, addr_street })}</div>
                 <Star star={total_star} />
             </div>
-            <Link to={ (user && user.role == 1 && user.restaurants.findIndex(item => item.id === id) > -1) ? `/owner/restaurant/${id}` : `/restaurant/${id}`} style={{ textAlign: 'end' }}>
+            <Link to={ (user && user.role == 1 && user.restaurants?.findIndex(item => item.id === id) > -1) ? `/owner/restaurant/${id}` : `/restaurant/${id}`} style={{ textAlign: 'end' }}>
                 <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
             </Link>
         </div>

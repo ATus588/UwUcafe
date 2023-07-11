@@ -74,6 +74,9 @@ const ProfilePage = () => {
     try {
       const response = await apiClient.post(`/update-profile`, { ...user, birthday })
       if (response.status === 200) {
+        let currUser = JSON.parse(localStorage.getItem('user'));
+        let restaurants = currUser?.restaurants;
+        localStorage.setItem('user', JSON.stringify({...response.data.user, restaurants}));
         toast('Update success!')
         navigate(0)
       }

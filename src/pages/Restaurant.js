@@ -124,20 +124,20 @@ function Restaurant() {
                             data.services && <div>
                                 <div className='res-detail-service d-flex justify-content-between'>
                                     <div><strong>{t(`air_condition`)}</strong></div>
-                                    <FontAwesomeIcon icon={data.services.findIndex(item => item.id == 1) > -1 ? faSquareCheck : faSquare} />
+                                    <FontAwesomeIcon icon={data.services?.findIndex(item => item.id == 1) > -1 ? faSquareCheck : faSquare} />
                                 </div>
                                 <hr></hr>
                                 <div className='res-detail-service d-flex justify-content-between'>
                                     <div>{t(`toilet`)}</div>
-                                    <FontAwesomeIcon icon={data.services.findIndex(item => item.id == 2) > -1 ? faSquareCheck : faSquare} />
+                                    <FontAwesomeIcon icon={data.services?.findIndex(item => item.id == 2) > -1 ? faSquareCheck : faSquare} />
                                 </div>
                                 <div className='res-detail-service d-flex justify-content-between'>
                                     <div>{t(`parking_slot`)}</div>
-                                    <FontAwesomeIcon icon={data.services.findIndex(item => item.id == 3) > -1 ? faSquareCheck : faSquare} />
+                                    <FontAwesomeIcon icon={data.services?.findIndex(item => item.id == 3) > -1 ? faSquareCheck : faSquare} />
                                 </div>
                                 <div className='res-detail-service d-flex justify-content-between'>
                                     <div>{t(`wifi`)}</div>
-                                    <FontAwesomeIcon icon={data.services.findIndex(item => item.id == 4) > -1 ? faSquareCheck : faSquare} />
+                                    <FontAwesomeIcon icon={data.services?.findIndex(item => item.id == 4) > -1 ? faSquareCheck : faSquare} />
                                 </div>
                             </div>
                         }
