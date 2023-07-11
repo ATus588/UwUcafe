@@ -59,7 +59,7 @@ function NewStore() {
             }
             setStore({ ...store, services: newServices })
         } else {
-            var index = newServices.indexOf(value);
+            var index = newServices.indexOf(parseInt(value));
             if (index > -1) {
                 newServices.splice(index, 1);
                 setStore({ ...store, services: newServices })
