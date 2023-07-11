@@ -87,5 +87,6 @@
     "owner": {
         "store_list": "喫茶店一覧",
         "add_btn": "新しい喫茶店を追加"
-    }
+    },
+    "review_btn": "レビュー"
 }

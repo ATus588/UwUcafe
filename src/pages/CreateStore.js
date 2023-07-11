@@ -174,6 +174,7 @@ function CreateStore() {
                         </div>
                     </label>
                     <div className='save-btn' onClick={handleSave}>{t('profile.save_button')}</div>
+                    <div className='save-btn' onClick={() => navigate(`/restaurant/${store.id}/reviews`)} style={{marginTop: '20px'}}>{t('review_btn')}</div>
                 </div>
 
                 <div className="divine-line">

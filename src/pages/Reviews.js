@@ -157,8 +157,8 @@ function Reviews() {
                 <div className="box">
                     {/* <!-- Info --> */}
                     <div className="info">
-                        <div className="info__image">
-                            <img src={restaurant.logo} alt="" className="" />
+                        <div className="info__image" style={{minHeight: '100px'}}>
+                            <img src={restaurant.logo} alt="" className="" style={{minHeight: '100px', objectFit: 'cover'}} />
                         </div>
                         <div className="info-content">
                             <h3 className="info-content__name">{restaurant.name}</h3>
